@@ -3,7 +3,7 @@ Guide
 
 
 @\web_crawler\myspider\myspider> 
-  * scrapy crawl metro_spider
+  * ```scrapy crawl metro_spider```
   * input start url
 
 
