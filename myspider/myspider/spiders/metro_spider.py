@@ -1,13 +1,13 @@
 import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
-from urllib.parse import unquote,urlparse
+from urllib.parse import urlparse
 
 
 class MetroSpiderSpider(CrawlSpider):
     name = "metro_spider"
-    allowed_domains = ["thai-inter-org.mfa.go.th"]
-    start_urls = ["https://thai-inter-org.mfa.go.th"]
+    start_urls =  [str(input("Start Url:"))]
+    allowed_domains = [str(urlparse(start_urls[0]).netloc)]
 
     rules = (
         Rule(LinkExtractor(allow_domains=allowed_domains), callback='parse_item', follow=True),
