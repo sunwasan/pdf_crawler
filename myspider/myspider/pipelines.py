@@ -12,9 +12,12 @@ import os
 
 class CustomFilesPipeline(FilesPipeline):
     def file_path(self, request, response=None, info=None, *, item=None):
+        spider_name = info.spider.name
+        domain = urlparse(request.url).netloc
+        folder_name = f'{spider_name}_crawl_{domain}'
+        
         file_url = request.url
-        # Decode the URL and extract the filename
         file_name = unquote(os.path.basename(file_url))
-        # Construct the file path
-        file_path = os.path.join('doc', file_name)
+        file_path = os.path.join(folder_name, file_name)
+        
         return file_path
