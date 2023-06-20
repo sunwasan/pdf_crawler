@@ -15,9 +15,8 @@ class CustomFilesPipeline(FilesPipeline):
         spider_name = info.spider.name
         domain = urlparse(request.url).netloc
         folder_name = f'{spider_name}_crawl_{domain}'
-        
-        file_url = request.url
-        file_name = unquote(os.path.basename(file_url))
+
+        file_name = item.get('file_name')
         file_path = os.path.join(folder_name, file_name)
         
         return file_path

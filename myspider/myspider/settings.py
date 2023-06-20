@@ -6,7 +6,7 @@
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-
+from shutil import which
 BOT_NAME = "myspider"
 
 SPIDER_MODULES = ["myspider.spiders"]
@@ -14,13 +14,17 @@ NEWSPIDER_MODULE = "myspider.spiders"
 
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
-ITEM_PIPELINES = {"myspider.pipelines.CustomFilesPipeline":1}
+ROBOTSTXT_OBEY = False
+ITEM_PIPELINES = {"myspider.pipelines.CustomFilesPipeline":100}
 # ITEM_PIPELINES = {"scrapy.pipelines.files.FilesPipeline": 1}
 FILES_STORE = "results"
+
+
+# TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
+
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
-
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
